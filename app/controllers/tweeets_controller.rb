@@ -1,34 +1,41 @@
 class TweeetsController < ApplicationController
-  before_action :set_tweeet, only: [:show, :edit, :update, :destroy]
+  before_action :set_tweeet, only: %i[show edit update destroy]
 
   # GET /tweeets
+
   # GET /tweeets.json
+
   def index
-    @tweeets = Tweeet.all
+    @tweeets = Tweeet.all.order('created_at DESC')
+    @tweeet = Tweeet.new
   end
 
   # GET /tweeets/1
+
   # GET /tweeets/1.json
-  def show
-  end
+
+  def show; end
 
   # GET /tweeets/new
+
   def new
     @tweeet = Tweeet.new
   end
 
   # GET /tweeets/1/edit
-  def edit
-  end
+
+  def edit; end
 
   # POST /tweeets
+
   # POST /tweeets.json
+
   def create
     @tweeet = Tweeet.new(tweeet_params)
 
     respond_to do |format|
       if @tweeet.save
-        format.html { redirect_to @tweeet, notice: 'Tweeet was successfully created.' }
+        format.html { redirect_to root_path, notice: 'Tweeet was successfully created.' }
         format.json { render :show, status: :created, location: @tweeet }
       else
         format.html { render :new }
@@ -38,7 +45,9 @@ class TweeetsController < ApplicationController
   end
 
   # PATCH/PUT /tweeets/1
+
   # PATCH/PUT /tweeets/1.json
+
   def update
     respond_to do |format|
       if @tweeet.update(tweeet_params)
@@ -52,9 +61,11 @@ class TweeetsController < ApplicationController
   end
 
   # DELETE /tweeets/1
+
   # DELETE /tweeets/1.json
+
   def destroy
-    @tweeet.destroy
+    tweeet.destroy
     respond_to do |format|
       format.html { redirect_to tweeets_url, notice: 'Tweeet was successfully destroyed.' }
       format.json { head :no_content }
@@ -62,13 +73,16 @@ class TweeetsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_tweeet
-      @tweeet = Tweeet.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def tweeet_params
-      params.require(:tweeet).permit(:tweeet)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+
+  def set_tweeet
+    @tweeet = Tweeet.find(params[:id])
+  end
+
+  # Never trust parameters from the scary internet, only allow the white list through.
+
+  def tweeet_params
+    params.require(:tweeet).permit(:tweeet)
+  end
 end
