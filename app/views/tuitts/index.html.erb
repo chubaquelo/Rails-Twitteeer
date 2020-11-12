@@ -25,11 +25,12 @@
 
 <div class="col-6">
   
-
-  <div class="card mb-2" style="width: 32rem;">
+  <% if user_signed_in? %>
+  <div class="card mb-2 border-0" style="width: 32rem;">
+    
     <div class="card-body">
       <div class="float-left mr-4"> 
-      <img src="https://via.placeholder.com/75" alt="Profile" class="rounded-circle">
+      <%= image_tag current_user.gravatar_url, class: "rounded-circle" %>
       </div>
       <h6 class="card-title mb-0">Tuitt about it</h5>
       <div class="blockquote-footer mb-2">Share your thinking with the world!</div>
@@ -54,8 +55,10 @@
           <%= form.submit "Post Tuitt", class: 'btn btn-primary mr-3'%>
         </div>
       <% end %>
-      </div>
     </div>
+  </div>
+
+<% end %>
 
       <% @tuitts.each do |tuitt| %>
         <div class="card mb-2" style="width: 32rem;">
