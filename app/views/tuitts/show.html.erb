@@ -1,8 +1,9 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Description:</strong>
-  <%= @tuitt.tuitt %>
+  <strong>Tuitt message says:</strong>
+  <h2><%= @tuitt.tuitt %></h2>
+  <h4 class="text-muted">Posted <%= time_ago_in_words(@tuitt.created_at) %> ago by @<%= @tuitt.user.username %></h4>
 </p>
 
 <%= link_to 'Edit', edit_tuitt_path(params[:id]) %> |
