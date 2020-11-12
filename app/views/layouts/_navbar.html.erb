@@ -1,0 +1,53 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-primary">
+  <a class="navbar-brand text-white font-weight-bold" href="/" ><h2 class="p-0 m-0">Tuitter</h2></a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <%# <li class="nav-item active">
+        <a class="nav-link text-white" href="/">Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link text-white" href="#">Tuitt List</a>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link text-white dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Account
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="#">Action</a>
+          <a class="dropdown-item" href="#">Another action</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="#">Something else here</a>
+        </div>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link text-white disabled" href="#" tabindex="-1" aria-disabled="true">Log In</a>
+      </li> %>
+    </ul>
+    <form class="form-inline my-2 my-lg-0">
+      <a href="/tuitts/new"><button class="btn btn btn-link my-2 my-sm-0 bg-white text-decoration-none">New Tuitt</button></a>
+      <% if user_signed_in? %>
+        <ul class="navbar-nav mr-auto ml-3">
+          <li class="nav-item dropdown">
+        <a class="nav-link text-white dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Account
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="<%= edit_user_registration_path %>">Edit Account Details</a>
+          <a class="dropdown-item" href="#">My Tuitts</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="#">Cancel my account</a>
+        </div>
+      </li>
+        </ul>
+        <%= link_to 'Log Out', destroy_user_session_path, method: :delete, class: "btn btn btn-link my-2 my-sm-0 text-white text-decoration-none" %>
+      <% else %>
+        <%= link_to 'Log In', new_user_session_path, class: "btn btn btn-link my-2 my-sm-0 text-white text-decoration-none" %>
+        <%= link_to 'Sign Up', new_user_registration_path, class: "btn btn btn-link my-2 my-sm-0 text-white text-decoration-none" %>
+      <% end %>
+    </form>
+  </div>
+</nav>

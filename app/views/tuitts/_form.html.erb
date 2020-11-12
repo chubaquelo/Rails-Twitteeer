@@ -1,0 +1,22 @@
+<%= form_with(model: tuitt, local: true) do |form| %>
+  <% if tuitt.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(tuitt.errors.count, "error") %> prohibited this tuitt from being saved:</h2>
+
+      <ul>
+        <% tuitt.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :tuitt %>
+    <%= form.text_area :tuitt %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit "Post Tuitt", class: 'btn btn-primary'%>
+  </div>
+<% end %>

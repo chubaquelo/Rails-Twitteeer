@@ -1,2 +1,0 @@
-class Tweeet < ApplicationRecord
-end
