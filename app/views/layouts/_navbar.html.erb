@@ -28,9 +28,45 @@
       </li> %>
     </ul>
     <form class="form-inline my-2 my-lg-0">
-      <a href="<%= root_path %>"><button class="btn btn btn-link my-2 my-sm-0 bg-white text-decoration-none">New Tuitt</button></a>
+      <!-- Button trigger modal -->
+      <button type="button" class="btn btn btn-link my-2 my-sm-0 bg-white text-decoration-none" data-toggle="modal" data-target="#exampleModalCenter">
+        New Tuitt
+      </button>
+
+      <!-- Modal -->
+      <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered w-100" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLongTitle">Post a new Tuitt</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <% if user_signed_in? %>
+                 <div class="card mb-2 border-0" style="width: 32rem;">
+                  <div class="card-body">
+                    <div class="float-left mr-4"> 
+                    <%= image_tag current_user.gravatar_url, class: "rounded-circle" %>
+                    </div>
+                    <h6 class="card-title mb-0">Tuitt about it</h5>
+                    <div class="blockquote-footer mb-2">Share your thinking with the world!</div>
+                    FORM TO TUITT GOES HERE
+                  </div>
+              </div>
+              <% else %>
+                <p class="font-weight-bold color-danger">You must be signed in to post.</p>
+              <% end %>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
       <% if user_signed_in? %>
-        <ul class="navbar-nav mr-auto ml-3">
+        <ul class="navbar-nav ml-3">
           <li class="nav-item dropdown">
         <a class="nav-link text-white dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Account

@@ -1,7 +1,6 @@
-<p id="notice"><%= notice %></p>
 
 <div class="container-fluid">
-  <div class="row">
+  <div class="row mt-3">
   <div class="col-3 px-2">
     <% if user_signed_in? %>
     <div class="card bg-light mb-3" style="max-width: 18rem;">
@@ -70,11 +69,21 @@
 
 <% end %>
 
+  <% flash.each do |type, msg| %>
+  <div class="alert alert-success alert-dismissible fade show">
+    <%= msg %>
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+  </div>
+<% end %>
+
+
       <% @tuitts.each do |tuitt| %>
-        <div class="card mb-2" style="width: 32rem;">
+        <div class="card mb-2" style="width: 33rem;">
         <div class="card-body">
           <div class="float-left mr-4"> 
-          <%= image_tag current_user.gravatar_url, class: "rounded-circle float-left" %>
+          <%= image_tag tuitt.user.gravatar_url, class: "rounded-circle float-left" %>
           </div>
           <h6 class="card-title text-muted"><%= tuitt.user.name %></h5>
           <h6 class="card-subtitle mb-2"><%= tuitt.tuitt %></h6>

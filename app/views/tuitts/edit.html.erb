@@ -1,12 +1,14 @@
 <% if user_signed_in? && @tuitt.user_id == current_user.id %>
-  <div class="container m-2">
+  <div class="container my-5">
     <div class="row">
-      <h1>Editing Tuitt</h1>
+      <div class="col-6 text-center mx-auto">
+        <h1>Editing Tuitt</h1>
 
-      <%= render 'form', tuitt: @tuitt %>
+        <%= render 'form', tuitt: @tuitt %>
 
-      <%= link_to 'Show', @tuitt %> |
-      <%= link_to 'Back', root_path %>
+        <%= link_to 'Show', @tuitt %> |
+        <%= link_to 'Back', root_path %>
+      </div>
     </div>
   </div>
 <% else %>
