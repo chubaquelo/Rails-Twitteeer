@@ -12,6 +12,7 @@
       </div>
     </div>
     <% end %>
+    <% unless user_signed_in? %><a href="<%= new_user_registration_path %>" class="btn btn-success my-4 btn-block" role="button">Sign Up your Account Here!</a><% end %>
     <table class="table">
       <thead>
         <tr class="thead-light">
