@@ -88,7 +88,7 @@
           </div>
           <h6 class="card-title text-muted"><%= tuitt.user.name %> <% if tuitt.created_at > 1.minutes.ago %><span class="badge badge-warning">Less than a minute ago</span><% end %></h5>
           <h6 class="card-subtitle mb-2"><%= tuitt.tuitt %></h6>
-          <div class="blockquote-footer"><%= time_ago_in_words(tuitt.created_at) %> ago by <%= tuitt.user.username %></div>
+          <div class="blockquote-footer"><%= time_ago_in_words(tuitt.created_at) %> ago by @<%= tuitt.user.username %></div>
           <% if user_signed_in? && current_user.id == tuitt.user_id %>
           <div class="edit-buttons">
             <%= link_to tuitt, class: "text-decoration-none" do %>
